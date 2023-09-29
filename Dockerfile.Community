@@ -2,7 +2,7 @@ FROM chatwoot/chatwoot:v3.1.1-ce
 
 RUN apk add --no-cache multirun postgresql-client
 
-CMD if pg_isready -h $PGHOST -p $PGPORT && \
+CMD pg_isready -h $PGHOST -p $PGPORT && \
     bundle exec rails db:chatwoot_prepare && \
     bundle exec rails db:migrate && \
     multirun \
